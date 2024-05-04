@@ -29,9 +29,9 @@ class Topic(models.Model):
 class Newspaper(models.Model):
     title = models.CharField(max_length=255)
     context = models.TextField()
-    published_date = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    published_date = models.DateField(auto_now_add=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     publishers = models.ManyToManyField(Redactor, related_name="publishers")
 
     def __str__(self):
-        return f"Title: {self.title}, publishers: {self.publishers}. {self.topic}, {self.published_date}"
+        return f"Title: {self.title}, {self.topic}, {self.published_date}"
