@@ -38,3 +38,7 @@ class NewspaperListView(generic.ListView):
     model = Newspaper
     context_object_name = "newspaper_list"
     template_name = "newspaper/newspaper_list.html"
+
+
+class NewspaperDetailView(generic.DetailView):
+    model = Newspaper
