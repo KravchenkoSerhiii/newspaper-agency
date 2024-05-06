@@ -23,6 +23,11 @@ class RedactorListView(generic.ListView):
     template_name = "newspaper/redactor_list.html"
 
 
+class RedactorDetailView(generic.DetailView):
+    model = Redactor
+    template_name = "newspaper/redactor_detail.html"
+
+
 class TopicListView(generic.ListView):
     model = Topic
     context_object_name = "topic_list"
