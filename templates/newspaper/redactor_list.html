@@ -4,15 +4,24 @@
   <h1>Redactors List</h1>
 
   {% if redactor_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
     {% for redactor in redactor_list %}
-      <ul>
-        <li>
-          {{ redactor.username }}: {{ redactor.first_name }} {{ redactor.last_name }}
-        </li>
-      </ul>
+      <tr>
+        <td>{{ redactor.id }}</td>
+        <td><a href="{{ redactor.get_absolute_url }}">{{ redactor.username }} </a></td>
+        <td>{{ redactor.first_name }}</td>
+        <td>{{ redactor.last_name }}</td>
+      </tr>
     {% endfor %}
 
-  {% else %}
-    <p>There no redactors in Agency</p>
-  {% endif %}
+    </table>
+    {% else %}
+      <p>There are no redactors in the agency.</p>
+    {% endif %}
 {% endblock %}

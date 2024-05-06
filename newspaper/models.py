@@ -18,6 +18,9 @@ class Redactor(AbstractUser):
     def __str__(self):
         return f"Username: {self.username}: {self.first_name} {self.last_name}."
 
+    def get_absolute_url(self):
+        return reverse("newspaper:redactor-detail", kwargs={"pk": self.pk})
+
 
 class Topic(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
