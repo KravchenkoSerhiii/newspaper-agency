@@ -5,9 +5,9 @@ from django.contrib.auth.models import AbstractUser
 
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
-    username = models.CharField(max_length=255, unique=True)
+    # username = models.CharField(max_length=255, unique=True)
     email = models.EmailField(unique=True, null=False, blank=False)
-    password = models.CharField(max_length=25, null=False, blank=False)
+    # password = models.CharField(max_length=25, null=False, blank=False)
     first_name = models.CharField(max_length=255, null=False, blank=False)
     last_name = models.CharField(max_length=255, null=False, blank=False)
 
@@ -31,10 +31,13 @@ class Topic(models.Model):
 
 class Newspaper(models.Model):
     title = models.CharField(max_length=255)
-    context = models.TextField()
+    content = models.TextField()
     published_date = models.DateField(auto_now_add=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    publishers = models.ManyToManyField(Redactor, related_name="publishers")
+    publishers = models.ManyToManyField(Redactor, related_name="newspapers")
+
 
     def __str__(self):
-        return f"Title: {self.title}, {self.topic}, {self.published_date}"
+        return self.title
+    # def __str__(self):
+    #     return f"Title: {self.title}, {self.topic}, {self.published_date} {self.publishers}"
