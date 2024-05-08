@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-from newspaper.forms import NewspaperForm, RedactorCreationForm
+from newspaper.forms import NewspaperForm, RedactorCreationForm, RedactorInfoUpdateForm
 
 from .models import Redactor, Topic, Newspaper
 
@@ -45,7 +45,7 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
 
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
-    fields = "__all__"
+    form_class = RedactorInfoUpdateForm
     success_url = reverse_lazy("newspaper:redactor-list")
 
 
