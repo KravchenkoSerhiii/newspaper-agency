@@ -5,5 +5,9 @@
   <p><strong>First name:</strong> {{ redactor.first_name }}</p>
   <p><strong>Last name:</strong> {{ redactor.last_name }}</p>
   <p><strong>Years of experience:</strong> {{ redactor.years_of_experience }}</p>
+  
+  <a href="{% url 'newspaper:redactor-update' pk=redactor.id %}" class="btn btn-primary link-to-page">
+        Update
+      </a>
 
 {% endblock %}

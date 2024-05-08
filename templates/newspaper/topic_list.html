@@ -4,15 +4,20 @@
   <h1>Topics List</h1>
   <a href="{% url 'newspaper:topic-create' %}" class="btn btn-primary link-to-page">
       Create
-    </a>
+  </a>
 
   {% if topic_list %}
     {% for topic in topic_list %}
       <ul>
         <li>
-          {{ topic.name}}
+          {{ topic.name }} | <a href="{% url 'newspaper:topic-update' pk=topic.id %}">
+        Update
+      </a>
         </li>
       </ul>
+{#      <a href="{% url 'newspaper:topic-update' pk=topic.id %}">#}
+{#        Update#}
+{#      </a>#}
     {% endfor %}
 
   {% else %}

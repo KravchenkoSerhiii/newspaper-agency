@@ -2,6 +2,10 @@
 
 {% block content %}
   <p>Topic: {{ newspaper.topic.name }}</p>
-  <p>Redactors: {{ newspaper.publishers  }} </p>
+  <p>Redactors:
+    <li>
+    {{ newspaper.publishers }}
+    </li>
+  </p>
 {% endblock %}
 {#{{ newspaper.publishers.all.get.last_name }}#}
