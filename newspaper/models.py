@@ -6,10 +6,10 @@ from django.contrib.auth.models import AbstractUser
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
     # username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(unique=True, null=False, blank=False)
+    # email = models.EmailField(unique=True, null=False, blank=False)
     # password = models.CharField(max_length=25, null=False, blank=False)
-    first_name = models.CharField(max_length=255, null=False, blank=False)
-    last_name = models.CharField(max_length=255, null=False, blank=False)
+    # first_name = models.CharField(max_length=255, null=False, blank=False)
+    # last_name = models.CharField(max_length=255, null=False, blank=False)
 
     class Meta:
         verbose_name = "redactor"
