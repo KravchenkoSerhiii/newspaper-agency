@@ -86,6 +86,12 @@ class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("newspaper:newspaper-list")
 
 
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper:newspaper-list")
+
+
 
     # publishers = Newspaper.objects.publishers.all()
     # queryset = Newspaper.objects.all().prefetch_related("newspapers__publishers")

@@ -7,5 +7,8 @@
     {{ newspaper.publishers }}
     </li>
   </p>
+  <a href="{% url 'newspaper:newspaper-update' pk=newspaper.id %}" class="btn btn-primary link-to-page">
+        Update
+  </a>
 {% endblock %}
 {#{{ newspaper.publishers.all.get.last_name }}#}
