@@ -36,7 +36,6 @@ class Newspaper(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     publishers = models.ManyToManyField(Redactor, related_name="newspapers")
 
-
     def __str__(self):
         return self.title
     # def __str__(self):

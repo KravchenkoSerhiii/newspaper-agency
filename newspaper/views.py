@@ -1,10 +1,15 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from newspaper.forms import NewspaperForm, RedactorCreationForm
 
 from .models import Redactor, Topic, Newspaper
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     num_redactors = Redactor.objects.count()
     num_topics = Topic.objects.count()
@@ -22,39 +27,58 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "newspaper/index.html", context)
 
 
-class RedactorListView(generic.ListView):
+class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     context_object_name = "redactor_list"
     template_name = "newspaper/redactor_list.html"
 
 
-class RedactorDetailView(generic.DetailView):
+class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
     template_name = "newspaper/redactor_detail.html"
 
 
-class TopicListView(generic.ListView):
+class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Redactor
+    form_class = RedactorCreationForm
+
+
+class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     context_object_name = "topic_list"
     template_name = "newspaper/topic_list.html"
     paginate_by = 5
 
 
-class NewspaperListView(generic.ListView):
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper:topic-list")
+
+
+class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     context_object_name = "newspaper_list"
     template_name = "newspaper/newspaper_list.html"
     paginate_by = 4
     # publishers = Newspaper.objects.publishers.all()
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(NewspaperListView, self).get_context_data(**kwargs)
-    #     publishers = self.request.GET("publishers", "")
-    #     return context
 
-
-class NewspaperDetailView(generic.DetailView):
+class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
+
+
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewspaperForm
+    success_url = reverse_lazy("newspaper:newspaper-list")
+
+
+
+    # publishers = Newspaper.objects.publishers.all()
     # queryset = Newspaper.objects.all().prefetch_related("newspapers__publishers")
 
-
+    # def get_context_data(self, **kwargs):
+    #     context = super(NewspaperDetailView, self).get_context_data(**kwargs)
+    #     # publishers = self.request.GET.get("publishers", "")
+    #     return context
