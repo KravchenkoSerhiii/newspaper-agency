@@ -9,10 +9,15 @@ def index(request: HttpRequest) -> HttpResponse:
     num_redactors = Redactor.objects.count()
     num_topics = Topic.objects.count()
     num_newspapers = Newspaper.objects.count()
+
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
+
     context = {
         "num_redactors": num_redactors,
         "num_topics": num_topics,
         "num_newspapers": num_newspapers,
+        "num_visits": num_visits + 1,
     }
     return render(request, "newspaper/index.html", context)
 
@@ -40,7 +45,16 @@ class NewspaperListView(generic.ListView):
     context_object_name = "newspaper_list"
     template_name = "newspaper/newspaper_list.html"
     paginate_by = 4
+    # publishers = Newspaper.objects.publishers.all()
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(NewspaperListView, self).get_context_data(**kwargs)
+    #     publishers = self.request.GET("publishers", "")
+    #     return context
 
 
 class NewspaperDetailView(generic.DetailView):
     model = Newspaper
+    # queryset = Newspaper.objects.all().prefetch_related("newspapers__publishers")
+
+
