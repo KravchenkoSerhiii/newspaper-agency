@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h4 class="card-title">Delete redactor?</h4>
+  <p class="card-description">
+    You are sure that you want to delete the redactor?
+  </p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url 'newspaper:redactor-detail' pk=redactor.id %}" class="btn btn-secondary">Back</a>
+  </form>
+{% endblock %}

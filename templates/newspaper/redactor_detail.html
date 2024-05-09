@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+  <h1>
+    <a href="{% url 'newspaper:redactor-delete' pk=redactor.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+    <br>
+    <a href="{% url 'newspaper:redactor-update' pk=redactor.id %}" class="btn btn-primary link-to-page">
+      Update
+    </a>
+  </h1>
   <p><strong>First name:</strong> {{ redactor.first_name }}</p>
   <p><strong>Last name:</strong> {{ redactor.last_name }}</p>
   <p><strong>Years of experience:</strong> {{ redactor.years_of_experience }}</p>
-  
-  <a href="{% url 'newspaper:redactor-update' pk=redactor.id %}" class="btn btn-primary link-to-page">
-        Update
-      </a>
+  <p><strong>Newspapers:</strong> {{ redactor.newspapers }}</p>
 
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h4 class="card-title">Delete topic?</h4>
+  <p class="card-description">
+    You are sure that you want to delete the topic?
+  </p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url 'newspaper:topic-list'%}" class="btn btn-secondary">Back</a>
+  </form>
+{% endblock %}

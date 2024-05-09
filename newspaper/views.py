@@ -49,6 +49,11 @@ class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("newspaper:redactor-list")
 
 
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("newspaper:redactor-list")
+
+
 class TopicListView(LoginRequiredMixin, generic.ListView):
     model = Topic
     context_object_name = "topic_list"
@@ -68,6 +73,12 @@ class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("newspaper:topic-list")
 
 
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("newspaper:topic-list")
+    template_name = "newspaper/topic_confirmation_delete.html"
+
+
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     context_object_name = "newspaper_list"
@@ -75,9 +86,12 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 4
     # publishers = Newspaper.objects.publishers.all()
 
+    # def get_context_data(self, *, object_list=None, **kwargs):
+
 
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
+    queryset = Newspaper.objects.all()
 
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
@@ -90,6 +104,12 @@ class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
     fields = "__all__"
     success_url = reverse_lazy("newspaper:newspaper-list")
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("newspaper:newspaper-list")
+    template_name = "newspaper/newspaper_confirmation_delete.html"
 
 
 
