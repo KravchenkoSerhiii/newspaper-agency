@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <p>Topic: {{ newspaper.topic.name }}</p>
-  <p>Redactors:
-    <li>
-    {{ newspaper.publishers }}
-    </li>
-  </p>
+    <p>Topic: {{ newspaper.topic.name }}</p>
+    <p>
+      {% for publishers in newspaper.publishers.all %}
+      <li>
+        Publishers: {{ newspaper.publishers }}
+      </li>
+    </p>
+  {% endfor %}
+{#  <p>Topic: {{ newspaper.topic.name }}</p>#}
+{#  <p>Redactors:#}
+{#    <li>#}
+{#    {{ newspaper.publishers }}#}
+{#    </li>#}
   <a href="{% url 'newspaper:newspaper-update' pk=newspaper.id %}" class="btn btn-primary link-to-page">
         Update
   </a>
