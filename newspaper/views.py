@@ -87,7 +87,8 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
     # publishers = Newspaper.objects.publishers.all()
 
     # def get_context_data(self, *, object_list=None, **kwargs):
-    #
+
+
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
     queryset = Newspaper.objects.all()
@@ -103,6 +104,12 @@ class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
     fields = "__all__"
     success_url = reverse_lazy("newspaper:newspaper-list")
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("newspaper:newspaper-list")
+    template_name = "newspaper/newspaper_confirmation_delete.html"
 
 
 
