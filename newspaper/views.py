@@ -51,7 +51,7 @@ class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Redactor
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("newspaper:redactor-list")
 
 
 class TopicListView(LoginRequiredMixin, generic.ListView):
@@ -73,6 +73,12 @@ class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("newspaper:topic-list")
 
 
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("newspaper:topic-list")
+    template_name = "newspaper/topic_confirmation_delete.html"
+
+
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
     model = Newspaper
     context_object_name = "newspaper_list"
@@ -82,7 +88,6 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
 
     # def get_context_data(self, *, object_list=None, **kwargs):
     #
-
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
     queryset = Newspaper.objects.all()
