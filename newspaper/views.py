@@ -86,12 +86,20 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 4
     # publishers = Newspaper.objects.publishers.all()
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["publishers"] = Newspaper.objects.publishers.all()
+    #     return context
 
 
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
-    queryset = Newspaper.objects.all()
+    # queryset = Newspaper.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["publishers"] = Redactor.objects.all()
+        return context
 
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
