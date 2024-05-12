@@ -37,6 +37,11 @@ class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
     template_name = "newspaper/redactor_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["newspapers"] = Newspaper.objects.all()
+        return context
+
 
 class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     model = Redactor
@@ -84,14 +89,15 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
     context_object_name = "newspaper_list"
     template_name = "newspaper/newspaper_list.html"
     paginate_by = 4
-    # publishers = Newspaper.objects.publishers.all()
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
 
 
 class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
-    queryset = Newspaper.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["publishers"] = Redactor.objects.all()
+        return context
 
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
