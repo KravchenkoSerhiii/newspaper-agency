@@ -13,6 +13,11 @@
   <p><strong>First name:</strong> {{ redactor.first_name }}</p>
   <p><strong>Last name:</strong> {{ redactor.last_name }}</p>
   <p><strong>Years of experience:</strong> {{ redactor.years_of_experience }}</p>
-  <p><strong>Newspapers:</strong> {{ redactor.newspapers }}</p>
+  <p><strong>Newspapers:</strong></p>
+  {% for newspapers in redactor.newspapers.all %}
+    <li>
+      {{ newspapers.title }}
+    </li>
+  {% endfor %}
 
 {% endblock %}
