@@ -38,5 +38,3 @@ class Newspaper(models.Model):
 
     def __str__(self):
         return self.title
-    # def __str__(self):
-    #     return f"Title: {self.title}, {self.topic}, {self.published_date} {self.publishers}"
