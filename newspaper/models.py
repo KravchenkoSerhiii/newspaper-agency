@@ -5,18 +5,13 @@ from django.contrib.auth.models import AbstractUser
 
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
-    # username = models.CharField(max_length=255, unique=True)
-    # email = models.EmailField(unique=True, null=False, blank=False)
-    # password = models.CharField(max_length=25, null=False, blank=False)
-    # first_name = models.CharField(max_length=255, null=False, blank=False)
-    # last_name = models.CharField(max_length=255, null=False, blank=False)
 
     class Meta:
         verbose_name = "redactor"
         verbose_name_plural = "redactors"
 
     def __str__(self):
-        return f"Username: {self.username}: {self.first_name} {self.last_name}."
+        return f"{self.username} ({self.first_name} {self.last_name})"
 
     def get_absolute_url(self):
         return reverse("newspaper:redactor-detail", kwargs={"pk": self.pk})
@@ -26,7 +21,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
 
     def __str__(self):
-        return f"Topic: {self.name}."
+        return self.name
 
 
 class Newspaper(models.Model):
