@@ -1,4 +1,12 @@
-{% extends "base.html" %}
+{% extends 'layouts/base-fullscreen.html' %}
+
+{% block title %} Sign IN {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} sign-in-illustration {% endblock body_class %}
+
 {% load crispy_forms_filters %}
 
 {% block content %}
@@ -10,7 +18,7 @@
 <h1>Login</h1>
 
 {% if next %}
-  <p>Please login to see this page.</p>
+  <p>Please log in to see this page.</p>
 {% endif %}
 
 <form method="post" action="{% url 'login' %}">

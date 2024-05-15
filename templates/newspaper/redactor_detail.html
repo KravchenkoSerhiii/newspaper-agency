@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layouts/base-fullscreen.html" %}
 
 {% block content %}
   <h1>
@@ -19,5 +19,7 @@
       {{ newspapers.title }}
     </li>
   {% endfor %}
-
+  <a href="{% url 'newspaper:redactor-list' %}" class="btn bg-gradient-dark w-auto me-2">
+        Go back
+  </a>
 {% endblock %}

@@ -1,9 +1,13 @@
-{% extends "base.html" %}
+{% extends 'layouts/base-fullscreen.html' %}
 
+<br>
 {% block content %}
   <h1>Redactors List</h1>
   <a href="{% url 'newspaper:redactor-create' %}" class="btn btn-primary link-to-page">
         Create
+  </a>
+  <a href="{% url 'newspaper:index' %}" class="btn bg-gradient-dark w-auto me-2">
+        Go back
   </a>
   {% include "includes/search.html" %}
 

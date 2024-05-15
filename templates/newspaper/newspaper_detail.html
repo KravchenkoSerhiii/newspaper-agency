@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layouts/base-fullscreen.html" %}
 
 {% block content %}
   <h1>
@@ -16,5 +16,8 @@
           {{ publishers.first_name }} {{ publishers.last_name }}
         </li>
     {% endfor %}
-
+  <br>
+  <a href="{% url 'newspaper:newspaper-list' %}" class="btn bg-gradient-dark w-auto me-2">
+        Go back
+  </a>
 {% endblock %}

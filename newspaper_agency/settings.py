@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ASSETS_ROOT = "/static/assets/"
 
 # Application definition
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "newspaper_agency.urls"
 
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -65,6 +67,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "newspaper.context_processors.cfg_assets_root",
             ],
         },
     },

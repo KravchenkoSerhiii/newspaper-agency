@@ -30,7 +30,11 @@ class RedactorCreationForm(UserCreationForm):
 class RedactorInfoUpdateForm(forms.ModelForm):
     class Meta:
         model = Redactor
-        fields = ["first_name", "last_name", "years_of_experience", "email"]
+        fields = ["first_name",
+                  "last_name",
+                  "years_of_experience",
+                  "email",
+                  ]
 
 
 class RedactorSearchForm(forms.Form):
