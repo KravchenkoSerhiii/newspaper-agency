@@ -4,7 +4,11 @@ Django project for managing redactors, topics and newspapers in agency
 
 ## Check it out!
 
-depl
+https://newspaper-agency-8lm0.onrender.com/
+
+Test account:
+username: test_user
+password: Pass123word
 
 
 ## Installation
