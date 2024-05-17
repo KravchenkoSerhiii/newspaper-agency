@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid">
             <a class="navbar-brand font-weight-bolder ms-sm-3" 
-               href="/newspaper/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+               href="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
               The best newspaper agency!
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,13 +43,13 @@
                         </div>
                         Pages
                       </h6>
-                      <a href="/newspaper/topics/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:topic-list' %}" class="dropdown-item border-radius-md">
                         Our topics
                       </a>
-                      <a href="/newspaper/newspapers/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:newspaper-list' %}" class="dropdown-item border-radius-md">
                         Our newspapers
                       </a>
-                      <a href="/newspaper/redactors/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:redactor-list' %}" class="dropdown-item border-radius-md">
                         Our redactors
                       </a>
                       <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0 mt-3">
@@ -72,13 +72,13 @@
                         </div>
                         Creation
                       </h6>
-                      <a href="/newspaper/topics/create/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:topic-create' %}" class="dropdown-item border-radius-md">
                         Add a new topic
                       </a>
-                      <a href="/newspaper/newspapers/create/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:newspaper-create' %}" class="dropdown-item border-radius-md">
                         Add a new newspaper
                       </a>
-                      <a href="/newspaper/redactors/create/" class="dropdown-item border-radius-md">
+                      <a href="{% url 'newspaper:redactor-create' %}" class="dropdown-item border-radius-md">
                         Add a new redactor
                       </a>
                     </div>
