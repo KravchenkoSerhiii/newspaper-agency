@@ -30,6 +30,9 @@
 <body class="{% block body_class %}{% endblock body_class %}">
 
     {% block content %}{% endblock content %}
+    {% block pagination %}
+      {% include "includes/pagination.html" %}
+    {% endblock %}
   
     {% include "includes/footer.html" %}
 
